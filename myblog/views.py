@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Tour
-from .form import ContactForm
+
+# from django.http import HttpResponse
+# from .models import Tour
+# from .form import ContactForm
 
 # Create your views here.
 
@@ -62,9 +63,9 @@ def register_view(request):
             user = User.objects.create_user(username=username, password=password)
             login(request, user)
             return redirect("home")
-        else:
-            form = RegisterForm()
-        return render(request, "accounts/register.html", {"form": form})
+    else:
+        form = RegisterForm()
+    return render(request, "accounts/register.html", {"form": form})
 
 
 def login_view(request):
